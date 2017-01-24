@@ -22,10 +22,21 @@
 }
 
 /* Clearfix */
-.row::before,
+/*.row::before,
 .row::after {
   display: table;
   content: '';
+}
+*/
+
+/* Another Clearfix implementation */
+
+.row::after, .row::before {
+     content: ".";
+     display: block;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
 }
 
 .row::after {
@@ -48,11 +59,17 @@
 /* Mobile defaults */
 .col-3, .col-4, .col-6, .col-12 {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px) {
+  /*remove bottom margin when not in mobile*/
+  .col-3, .col-4, .col-6, .col-12 {
+    margin-bottom: 0;
+  }
+
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;
